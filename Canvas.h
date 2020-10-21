@@ -1,5 +1,6 @@
 #pragma once
 #include "Types.h"
+#include "Image.h"
 #include "SDL.h"
 #include <vector>
 
@@ -13,6 +14,7 @@ public:
 	void Draw(SDL_Renderer* renderer);
 	void Clear(const glm::vec3& color);
 	void DrawPoint(const glm::ivec2& point, const glm::vec3& color);
+	void DrawImage(Image& image);
 
 private:
 	SDL_Texture* m_texture{ nullptr };

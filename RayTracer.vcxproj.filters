@@ -16,6 +16,15 @@
     <ClCompile Include="Canvas.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Canvas.h">
@@ -25,6 +34,15 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Ray.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

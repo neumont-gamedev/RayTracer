@@ -1,4 +1,6 @@
 #include "Canvas.h"
+#include "Image.h"
+#include "Tracer.h"
 #include "SDL.h"
 #include <iostream>
 
@@ -29,6 +31,11 @@ int main(int, char**)
 	}
 	
 	Canvas canvas(renderer, width, height);
+	Image image(width, height);
+	Tracer tracer;
+
+	image.Clear({1, 1, 0});
+
 
 	bool quit = false;
 	while (!quit)
@@ -50,7 +57,9 @@ int main(int, char**)
 			break;
 		}
 
-		canvas.Clear({ 0, 1, 0});
+		canvas.Clear({ 0, 0, 0});
+		tracer.Trace(image);
+		canvas.DrawImage(image);
 		canvas.Update();
 
 		SDL_RenderClear(renderer);

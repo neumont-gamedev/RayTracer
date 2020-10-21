@@ -39,3 +39,8 @@ void Canvas::DrawPoint(const glm::ivec2& point, const glm::vec3& color)
     m_buffer[point.x + (point.y * m_width)] = Vec3ToPixel(color);
 
 }
+
+void Canvas::DrawImage(Image& image)
+{
+    std::copy(image.buffer().begin(), image.buffer().end(), m_buffer.begin());
+}
