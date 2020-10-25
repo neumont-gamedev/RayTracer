@@ -45,5 +45,8 @@
     <ClInclude Include="Sphere.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
