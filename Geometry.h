@@ -4,6 +4,11 @@
 class Geometry
 {
 public:
-	virtual bool Hit(const ray& r) = 0;
+	virtual bool Hit(const ray& r, float tMin, float tMax, raycastHit& hit) = 0;
+
+	const glm::vec3& color() { return m_color; }
+
+protected:
+	glm::vec3 m_color{ 0, 0, 0 };
 };
 

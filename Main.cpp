@@ -2,6 +2,7 @@
 #include "Image.h"
 #include "Tracer.h"
 #include "Sphere.h"
+#include "Scene.h"
 #include "SDL.h"
 #include <iostream>
 #include <vector>
@@ -35,13 +36,14 @@ int main(int, char**)
 	Canvas canvas(renderer, width, height);
 	Image image(width, height);
 	Tracer tracer;
-	std::vector<Geometry*> scene;
-	scene.push_back(new Sphere{ {2, 2, -4}, 1, {1, 0, 0} });
-	scene.push_back(new Sphere{ {0, 0, -6}, 2, {0, 1, 0} });
-	scene.push_back(new Sphere{ {-2, -2, -3}, 1, {0, 0, 1} });
+	Scene scene;
+
+	scene.Add(new Sphere{ {2, 2, -4}, 1, {1, 0, 0} });
+	scene.Add(new Sphere{ {0, 0, -6}, 2, {0, 1, 0} });
+	scene.Add(new Sphere{ {-2, -2, -3}, 1, {0, 0, 1} });
 
 	image.Clear({1, 1, 0});
-
+	tracer.Trace(image, scene);
 
 	bool quit = false;
 	while (!quit)
@@ -64,7 +66,6 @@ int main(int, char**)
 		}
 
 		canvas.Clear({ 0, 0, 0});
-		tracer.Trace(image, scene);
 		canvas.DrawImage(image);
 		canvas.Update();
 
