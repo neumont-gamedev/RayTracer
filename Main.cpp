@@ -2,6 +2,7 @@
 #include "Image.h"
 #include "Tracer.h"
 #include "Sphere.h"
+#include "Plane.h"
 #include "Scene.h"
 #include "SDL.h"
 #include <iostream>
@@ -41,6 +42,7 @@ int main(int, char**)
 	scene.Add(new Sphere{ {2, 2, -4}, 1, {1, 0, 0} });
 	scene.Add(new Sphere{ {0, 0, -6}, 2, {0, 1, 0} });
 	scene.Add(new Sphere{ {-2, -2, -3}, 1, {0, 0, 1} });
+	scene.Add(new Plane{ {0, -2, 0}, {0, 1, 0}, {1, 0, 1} });
 
 	image.Clear({1, 1, 0});
 	tracer.Trace(image, scene);
