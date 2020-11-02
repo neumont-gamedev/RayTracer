@@ -5,14 +5,13 @@
 void Tracer::Trace(Image& image, Scene& scene)
 {
 	float aspectRatio = image.width() / (float)image.height();
-	int sampleRate = 3;
 
 	for (int y = 0; y < image.height(); y++)
 	{
 		for (int x = 0; x < image.width(); x++)
 		{
 			glm::vec3 color{ 0, 0, 0 };
-			for (int s = 0; s < sampleRate; s++)
+			for (int s = 0; s < m_samples; s++)
 			{
 				glm::vec3 p;
 				p.x = (x + random01()) / (float)image.width();
@@ -28,7 +27,7 @@ void Tracer::Trace(Image& image, Scene& scene)
 				raycastHit hit;
 				color += scene.Trace(r, 0.001f, FLT_MAX, hit);
 			}
-			color /= (float)sampleRate;
+			color /= (float)m_samples;
 			image.SetPoint({ x, y }, color);
 		}
 	}

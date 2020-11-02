@@ -1,14 +1,18 @@
 #pragma once
 #include "Ray.h"
 
+class Material;
+
 class Geometry
 {
 public:
+	Geometry() {}
+	Geometry(Material* material) : m_material{ material } {}
 	virtual bool Hit(const ray& r, float tMin, float tMax, raycastHit& hit) = 0;
 
-	const glm::vec3& color() { return m_color; }
+	const Material* material() { return m_material; }
 
 protected:
-	glm::vec3 m_color{ 0, 0, 0 };
+	Material* m_material{ nullptr };
 };
 
