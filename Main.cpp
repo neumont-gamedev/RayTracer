@@ -13,7 +13,7 @@ int main(int, char**)
 {
 	const int width = 800;
 	const int height = 600;
-	const int samples = 20;
+	const int samples = 2;
 	const int depth = 20;
 
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -43,10 +43,9 @@ int main(int, char**)
 	Scene scene;
 
 	scene.Add(new Sphere{ {2, 2, -4}, 1, new Lambertian{ glm::vec3{0, 1, 0} } });
-	scene.Add(new Sphere{ {0, 0, -6}, 2, new Lambertian{ glm::vec3{1, 0, 1} } });
+	scene.Add(new Sphere{ {0, 0, -6}, 2, new Metal{ glm::vec3{1, 0, 1}, 0.1f } });
 	scene.Add(new Sphere{ {-2, -2, -3}, 1, new Lambertian{ glm::vec3{1, 1, 1} } });
-	scene.Add(new Plane{ {0, -2, 0}, {0, 1, 0}, new Metal{ glm::vec3{0.5f, 0.5f, 0.5f}, 0 } });
-
+	scene.Add(new Plane{ {0, -2, 0}, {0, 1, 0}, new Metal{ glm::vec3{0.5f, 0.5f, 0.5f}, 0.2f } });
 	image.Clear({1, 1, 0});
 	tracer.Trace(image, scene);
 

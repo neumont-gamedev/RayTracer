@@ -28,12 +28,3 @@ protected:
 	float m_fuzz = 0;
 };
 
-class Dielectric : public Material
-{
-public:
-	Dielectric(float index) : m_index(index) {}
-	virtual bool Scatter(const ray& r, const raycastHit& hit, glm::vec3& attenuation, ray& scattered) const override;
-
-public:
-	float m_index = 0.0f;
-};
