@@ -7,7 +7,7 @@ class Geometry;
 class Scene
 {
 public:
-	glm::vec3 Trace(const ray& r, float tMin, float tMax, raycastHit& hit);
+	glm::vec3 Trace(const ray& r, float tMin, float tMax, raycastHit& hit, int depth);
 	void Add(Geometry* geometry);
 
 protected:

@@ -5,6 +5,7 @@
 #include "Plane.h"
 #include "Scene.h"
 #include "Material.h"
+#include "Camera.h"
 #include "SDL.h"
 #include <iostream>
 #include <vector>
@@ -13,7 +14,7 @@ int main(int, char**)
 {
 	const int width = 800;
 	const int height = 600;
-	const int samples = 2;
+	const int samples = 20;
 	const int depth = 20;
 
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -39,15 +40,17 @@ int main(int, char**)
 	
 	Canvas canvas{ renderer, width, height };
 	Image image{ width, height };
+	Camera camera{ glm::vec3{2, 2, 5}, glm::vec3{0, 0, 0}, glm::vec3{0, 1, 0}, 80.0f, &image };
 	Tracer tracer{ samples, depth };
 	Scene scene;
 
 	scene.Add(new Sphere{ {2, 2, -4}, 1, new Lambertian{ glm::vec3{0, 1, 0} } });
 	scene.Add(new Sphere{ {0, 0, -6}, 2, new Metal{ glm::vec3{1, 0, 1}, 0.1f } });
 	scene.Add(new Sphere{ {-2, -2, -3}, 1, new Lambertian{ glm::vec3{1, 1, 1} } });
-	scene.Add(new Plane{ {0, -2, 0}, {0, 1, 0}, new Metal{ glm::vec3{0.5f, 0.5f, 0.5f}, 0.2f } });
+	scene.Add(new Sphere{ {0, 0, 0}, 1, new Dielectric{ glm::vec3{0.8f, 0.8f, 1}, 1.33f } });
+	scene.Add(new Plane{ {0, -2, 0}, {0, 1, 0}, new Metal{ glm::vec3{0.5f, 0.5f, 0.5f}, 1.0f } });
 	image.Clear({1, 1, 0});
-	tracer.Trace(image, scene);
+	tracer.Trace(image, scene, camera);
 
 	bool quit = false;
 	while (!quit)
