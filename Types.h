@@ -5,6 +5,7 @@
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
+#include <glm/gtx/color_space.hpp>
 #include "Ray.h"
 
 using pixel_t = std::uint32_t;
